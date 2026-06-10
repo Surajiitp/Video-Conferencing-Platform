@@ -22,20 +22,20 @@ app.use(express.urlencoded({ limit: "40kb", extended: true }));
 app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
-    app.set("mongo_user")
+  try {
+    const connectionDb = await mongoose.connect(
+      "mongodb+srv://Surajitp:Suraj12345@cluster0.guqp5kl.mongodb.net/video_call?retryWrites=true&w=majority"
+    );
 
-const connectionDb = await mongoose.connect(
-"mongodb+srv://Surajitp:Suraj12345@cluster0.guqp5kl.mongodb.net/video_call?retryWrites=true&w=majority"
-)    
-    console.log(`MONGO Connected DB HOst: ${connectionDb.connection.host}`)
+    console.log(`MONGO Connected DB Host: ${connectionDb.connection.host}`);
+
     server.listen(app.get("port"), () => {
-        console.log("LISTENIN ON PORT 8000")
+      console.log("LISTENING ON PORT 8000");
     });
 
-
-
-}
-
-
+  } catch (err) {
+    console.error("FULL ERROR =>", err);
+  }
+};
 
 start();
