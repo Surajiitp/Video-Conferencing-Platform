@@ -105,6 +105,3 @@ npm run dev
 
 GitHub: https://github.com/Surajitp
 
-## License
-
-This project is licensed under the MIT License.
